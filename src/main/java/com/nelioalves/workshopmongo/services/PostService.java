@@ -21,13 +21,18 @@ public class PostService {
         return repo.findAll();
     }
 
-    public Post findById(String id){
+    public Post findById(String id) {
         Optional<Post> obj = repo.findById(id);
-        return obj.orElseThrow(()-> new ObjectNotFoundException("Objeto não encontrado"));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
-    public List<Post> findByTitle(String text){
-        return repo.findByTitleContainingIgnoreCase(text);
+    /*
+            public List<Post> findByTitle(String text){
+            return repo.findByTitleContainingIgnoreCase(text);
+        }
+    */
+    public List<Post> findByTitle(String text) {
+        return repo.searchTitle(text);
     }
 
 }
